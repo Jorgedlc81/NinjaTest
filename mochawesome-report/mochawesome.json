@@ -1,0 +1,238 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 5,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-06T16:20:04.107Z",
+    "end": "2025-06-06T16:20:30.908Z",
+    "duration": 26801,
+    "testsRegistered": 6,
+    "passPercent": 83.33333333333334,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7eeb6c70-07c7-47d6-828b-7106ba9431f6",
+      "title": "",
+      "fullFile": "C:\\Users\\Jorge\\Desktop\\Ninja_Test\\test\\loginTest.js",
+      "file": "\\test\\loginTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+          "title": "Login Tests",
+          "fullFile": "C:\\Users\\Jorge\\Desktop\\Ninja_Test\\test\\loginTest.js",
+          "file": "\\test\\loginTest.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Login Tests\"",
+              "fullTitle": "Login Tests \"before each\" hook in \"Login Tests\"",
+              "timedOut": false,
+              "duration": 1901,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build();\nawait driver.get('https://app.ninjarmm.com/auth/#/login');",
+              "err": {},
+              "uuid": "da5d14d8-cd97-4a59-a32b-4a64dece1733",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Login Tests\"",
+              "fullTitle": "Login Tests \"after each\" hook in \"Login Tests\"",
+              "timedOut": false,
+              "duration": 43,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "bd17090b-a8a2-458d-ba50-5f28e7da9d12",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC_LOGIN_001 - Valid login",
+              "fullTitle": "Login Tests TC_LOGIN_001 - Valid login",
+              "timedOut": false,
+              "duration": 10857,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await performLogin(driver, testData.validCredentials.username, testData.validCredentials.password);\nawait driver.wait(until.urlContains('mfa'), 10000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.ok(currentUrl.includes('mfa'), `Login failed or not redirected: current URL is ${currentUrl}`);",
+              "err": {
+                "message": "TimeoutError: Waiting for URL to contain \"mfa\"\nWait timed out after 10190ms",
+                "estack": "TimeoutError: Waiting for URL to contain \"mfa\"\nWait timed out after 10190ms\n    at C:\\Users\\Jorge\\Desktop\\Ninja_Test\\node_modules\\selenium-webdriver\\lib\\webdriver.js:929:22\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "665896cc-2625-44cf-ae18-53ad10e73d89",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_LOGIN_002 - Invalid Password",
+              "fullTitle": "Login Tests TC_LOGIN_002 - Invalid Password",
+              "timedOut": false,
+              "duration": 971,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await performLogin(driver, testData.validCredentials.username, testData.invalidCredentials.password);\nconst alert = await driver.wait(until.elementLocated(By.css('.alert.alert-danger')));\nconst message = await alert.getText();\nassert.ok(message.length > 0, 'Expected error message not found');",
+              "err": {},
+              "uuid": "0e7fb130-2006-4fcf-9a75-a52077071fe4",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_LOGIN_003 - Invalid UserName",
+              "fullTitle": "Login Tests TC_LOGIN_003 - Invalid UserName",
+              "timedOut": false,
+              "duration": 882,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await performLogin(driver, testData.invalidCredentials.username, testData.validCredentials.password);\nconst alert = await driver.wait(until.elementLocated(By.css('.alert.alert-danger')));\nconst message = await alert.getText();\nassert.ok(message.length > 0, 'Expected error message not found');",
+              "err": {},
+              "uuid": "3e0ef6be-c557-4daf-b7d7-c4ddf48d1579",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_LOGIN_004 - Blank fields",
+              "fullTitle": "Login Tests TC_LOGIN_004 - Blank fields",
+              "timedOut": false,
+              "duration": 944,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await performLogin(driver, testData.invalidCredentials.username, testData.validCredentials.password);\nconst errorGroup = await driver.wait(until.elementLocated(By.css('.form-group.has-error')));\nassert.ok(await errorGroup.isDisplayed(), 'Email field is not marked with an error');",
+              "err": {},
+              "uuid": "a57ad183-cd99-435e-abeb-8edd27215b37",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_LOGIN_005 - Forgot Password Navigation",
+              "fullTitle": "Login Tests TC_LOGIN_005 - Forgot Password Navigation",
+              "timedOut": false,
+              "duration": 515,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const forgotLink = await driver.wait(until.elementLocated(By.css('a[href=\"#/resetPassword\"]')), 5000);\nawait forgotLink.click();\nawait driver.wait(until.urlIs('https://app.ninjarmm.com/auth/#/resetPassword'), 5000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.ok(currentUrl.includes('resetPassword'), `Login failed or not redirected: current URL is ${currentUrl}`);",
+              "err": {},
+              "uuid": "44679fbc-ac0b-4f91-8635-9da423a0a69d",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_LOGIN_006 - Registration Navigation",
+              "fullTitle": "Login Tests TC_LOGIN_006 - Registration Navigation",
+              "timedOut": false,
+              "duration": 527,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const signUpLink = await driver.wait(until.elementLocated(By.css('a[href=\"#/register\"]')), 5000);\nawait signUpLink.click();\nawait driver.wait(until.urlContains('https://app.ninjarmm.com/auth/#/register'),5000);\nconst currentUrl = await driver.getCurrentUrl();\nassert.ok(currentUrl.includes('register'), `Failed to navigate to registration page. Current URL: ${currentUrl}`);",
+              "err": {},
+              "uuid": "d7178b03-0431-4423-870b-175eb4153a26",
+              "parentUUID": "5735ae1d-e443-49c6-bebe-0a87e738ff48",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0e7fb130-2006-4fcf-9a75-a52077071fe4",
+            "3e0ef6be-c557-4daf-b7d7-c4ddf48d1579",
+            "a57ad183-cd99-435e-abeb-8edd27215b37",
+            "44679fbc-ac0b-4f91-8635-9da423a0a69d",
+            "d7178b03-0431-4423-870b-175eb4153a26"
+          ],
+          "failures": [
+            "665896cc-2625-44cf-ae18-53ad10e73d89"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 14696,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 20000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.5.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
