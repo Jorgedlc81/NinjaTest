@@ -4,7 +4,7 @@
   "description": "Selenium test case ",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.js --reporter mochawesome"
+    "test": "npx mocha test/**/*.js --reporter mochawesome"
   },
   "author": "Jorge Dlc",
   "license": "MIT",
